@@ -62,8 +62,9 @@ public class TestAutocomplete extends TestCase {
     assertTrue(s.equals(ar.getWordsAsString("thi")));
   }
   
-  
-  
-  
-  
+  public void testAdditionalWords(){
+    ar.train("zebra third zebra third third zebra zebra zebra zebra");
+    assertTrue(ar.getWords("thi").get(0).getConfidence() == 4);
+    assertTrue(ar.getWords("").get(0).getConfidence() == 6);
+  }  
 }
